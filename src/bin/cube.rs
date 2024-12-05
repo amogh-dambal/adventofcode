@@ -12,11 +12,9 @@ fn main() {
 fn part_2() {
     let sum_power_sets: u32 = stdin()
         .lines()
-        .map(|line| {
-            match line {
-                Ok(s) => return get_power_set(s),
-                Err(err) => panic!("unable to read from STDIN: {}", err),
-            }
+        .map(|line| match line {
+            Ok(s) => return get_power_set(s),
+            Err(err) => panic!("unable to read from STDIN: {}", err),
         })
         .sum();
 
@@ -41,7 +39,7 @@ fn get_power_set(s: String) -> u32 {
                 Ok(val) => cubes = val,
                 Err(err) => panic!("error parsing value: {}", err),
             }
-            
+
             match game_info[1] {
                 "red" => red = red.max(cubes),
                 "green" => green = green.max(cubes),
@@ -49,7 +47,7 @@ fn get_power_set(s: String) -> u32 {
                 _ => panic!("invalid color"),
             };
         });
-    
+
     // println!("{} red, {} green, {} blue", red, green, blue);
     return red * green * blue;
 }
@@ -59,24 +57,22 @@ fn get_power_set(s: String) -> u32 {
 fn part_1() {
     let sum_game_ids: u32 = stdin()
         .lines()
-        .map(|line| {
-            match line {
-                Ok(s) => {  
-                    return get_game_id(s);
-                },
-                Err(err) => {
-                    panic!("Error while reading lines: {}", err);
-                },
+        .map(|line| match line {
+            Ok(s) => {
+                return get_game_id(s);
+            }
+            Err(err) => {
+                panic!("Error while reading lines: {}", err);
             }
         })
         .sum();
-    
+
     println!("{}", sum_game_ids);
 }
 
 fn get_game_id(s: String) -> u32 {
     let parts: Vec<&str> = s.split(":").collect();
-    
+
     // Get the game data
     let all_possible = parts[1]
         .split(|c| {
@@ -88,10 +84,9 @@ fn get_game_id(s: String) -> u32 {
 
     if !all_possible {
         return 0;
-    } 
-    else {
+    } else {
         let game_id_part: Vec<&str> = parts[0].split(" ").collect();
-        match game_id_part[game_id_part.len()-1].parse::<u32>() {
+        match game_id_part[game_id_part.len() - 1].parse::<u32>() {
             Ok(val) => return val,
             Err(err) => panic!("error parsing Game ID: {err}"),
         }
@@ -105,7 +100,7 @@ fn is_cube_draw_possible(draw: &str) -> bool {
         Ok(val) => cubes = val,
         Err(err) => panic!("error parsing value: {}", err),
     }
-    
+
     match game_info[1] {
         "red" => return cubes <= RED,
         "green" => return cubes <= GREEN,
@@ -113,3 +108,4 @@ fn is_cube_draw_possible(draw: &str) -> bool {
         _ => panic!("invalid color"),
     }
 }
+
