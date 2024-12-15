@@ -1,3 +1,5 @@
+/// Advent of Code 2024
+/// Day 1
 use std::{
     cmp::{max, min},
     collections::{BinaryHeap, HashMap},
