@@ -7,6 +7,7 @@ fn main() {
     part_2();
 }
 
+#[allow(unused)]
 fn part_1() {
     let calibration_sum: u32 = stdin()
         .lines()

@@ -54,6 +54,7 @@ fn get_power_set(s: String) -> u32 {
 
 // Part 1
 // https://adventofcode.com/2023/day/2#part1
+#[allow(unused)]
 fn part_1() {
     let sum_game_ids: u32 = stdin()
         .lines()

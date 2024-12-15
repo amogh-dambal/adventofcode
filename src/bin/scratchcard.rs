@@ -79,6 +79,7 @@ fn get_matches(card: String) -> u32 {
     return matches as u32;
 }
 
+#[allow(unused)]
 fn part1() {
     let points: u32 = stdin()
         .lines()
